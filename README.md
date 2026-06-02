@@ -42,7 +42,7 @@ This adds components (and any shared primitives they depend on) into your config
 Add individual components by name:
 
 ```bash
-npx shadcn@latest add https://ui.trophy.so/<component-name>
+npx shadcn@latest add https://ui.trophy.so/component-name
 ```
 
 Examples:
