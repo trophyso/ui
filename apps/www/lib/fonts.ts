@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Montserrat } from "next/font/google"
+import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google"
 
 import { cn } from "@/lib/utils"
 
@@ -13,13 +13,13 @@ const fontMono = Geist_Mono({
   weight: ["400"],
 })
 
-const fontMontserrat = Montserrat({
+const fontJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-jakarta-sans",
 })
 
 export const fontVariables = cn(
   fontSans.variable,
   fontMono.variable,
-  fontMontserrat.variable
+  fontJakartaSans.variable
 )

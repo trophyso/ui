@@ -135,7 +135,7 @@ export default function IndexPage() {
         />
         <PageHeader className="relative z-10">
           <PageHeaderHeading className="max-w-4xl">
-            <span className="font-montserrat flex items-baseline gap-2 sm:gap-3">
+            <span className="font-jakarta-sans flex items-baseline gap-2 sm:gap-3">
               {/* <span className="leading-[0.95] font-bold tracking-[-0.03em]">
                 Gamification UI Kit
               </span> */}
