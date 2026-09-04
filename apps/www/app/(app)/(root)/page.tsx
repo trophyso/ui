@@ -134,6 +134,9 @@ export default function IndexPage() {
           }}
         />
         <PageHeader className="relative z-10">
+          <span className="bg-muted rounded-full px-4 py-1.5 text-sm font-medium">
+            React Native coming soon
+          </span>
           <PageHeaderHeading className="max-w-4xl">
             <span className="font-jakarta-sans flex items-baseline gap-2 sm:gap-3">
               {/* <span className="leading-[0.95] font-bold tracking-[-0.03em]">
