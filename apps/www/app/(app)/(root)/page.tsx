@@ -138,7 +138,7 @@ export default function IndexPage() {
             React Native coming soon
           </span>
           <PageHeaderHeading className="max-w-4xl">
-            <span className="font-jakarta-sans flex items-baseline gap-2 sm:gap-3">
+            <span className="flex items-baseline gap-2 sm:gap-3">
               {/* <span className="leading-[0.95] font-bold tracking-[-0.03em]">
                 Gamification UI Kit
               </span> */}

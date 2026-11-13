@@ -1,8 +1,8 @@
-import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google"
+import { Funnel_Display, Funnel_Sans, Geist_Mono } from "next/font/google"
 
 import { cn } from "@/lib/utils"
 
-const fontSans = Geist({
+const fontSans = Funnel_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
 })
@@ -13,13 +13,13 @@ const fontMono = Geist_Mono({
   weight: ["400"],
 })
 
-const fontJakartaSans = Plus_Jakarta_Sans({
+const fontDisplay = Funnel_Display({
   subsets: ["latin"],
-  variable: "--font-jakarta-sans",
+  variable: "--font-display",
 })
 
 export const fontVariables = cn(
   fontSans.variable,
   fontMono.variable,
-  fontJakartaSans.variable
+  fontDisplay.variable
 )
