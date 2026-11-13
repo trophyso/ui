@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { mdxComponents } from "@/mdx-components"
-import { findNeighbour } from "fumadocs-core/server"
+import { findNeighbour } from "fumadocs-core/page-tree"
 import { ChevronLeft, ChevronRight, CircleAlert, GitFork } from "lucide-react"
 
 import { siteConfig } from "@/lib/config"
@@ -80,7 +80,7 @@ export default async function DocsPage(props: {
   const doc = page.data
   // @ts-expect-error - fumadocs types
   const MDX = doc.body
-  const neighbours = await findNeighbour(source.pageTree, page.url)
+  const neighbours = findNeighbour(source.pageTree, page.url)
   // @ts-expect-error - fumadocs-mdx DocMethods
   const pageMarkdown: string = await doc.getText("raw")
 
