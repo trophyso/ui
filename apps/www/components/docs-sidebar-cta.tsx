@@ -14,7 +14,7 @@ export function DocsSidebarCta({ className }: React.ComponentProps<"div">) {
       )}
     >
       <Icons.logo className="size-6" />
-      <div className="relative z-10 text-base leading-tight font-semibold text-balance group-hover:underline">
+      <div className="font-display relative z-10 text-base leading-tight font-medium tracking-[-0.01em] text-balance group-hover:underline">
         Power Gamification with Trophy
       </div>
       <div className="text-foreground relative z-10">
