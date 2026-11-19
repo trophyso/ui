@@ -6,7 +6,7 @@ import { Trophy } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-interface Achievement {
+interface Milestone {
   id: string
   name: string
   description?: string | null
@@ -16,11 +16,11 @@ interface Achievement {
   rarity?: number
 }
 
-interface UserAchievement extends Achievement {
+interface UserMilestone extends Milestone {
   achievedAt: string | null
 }
 
-const achievementListVariants = cva("flex flex-col", {
+const milestoneListVariants = cva("flex flex-col", {
   variants: {
     columns: {
       2: "",
@@ -40,14 +40,14 @@ const achievementListVariants = cva("flex flex-col", {
   },
 })
 
-interface AchievementListProps
+interface MilestoneListProps
   extends
     React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof achievementListVariants> {
-  achievements: UserAchievement[]
+    VariantProps<typeof milestoneListVariants> {
+  milestones: UserMilestone[]
   badgeSize?: "sm" | "default" | "lg"
   lockedStyle?: "grayscale" | "silhouette" | "hidden"
-  onAchievementClick?: (achievement: UserAchievement) => void
+  onMilestoneClick?: (milestone: UserMilestone) => void
 }
 
 const badgeSizeMap = {
@@ -68,16 +68,16 @@ const progressSizeMap = {
   lg: 56,
 } as const
 
-const AchievementList = React.forwardRef<HTMLDivElement, AchievementListProps>(
+const MilestoneList = React.forwardRef<HTMLDivElement, MilestoneListProps>(
   (
     {
       className,
       columns,
       gap,
-      achievements,
+      milestones,
       badgeSize = "default",
       lockedStyle = "grayscale",
-      onAchievementClick,
+      onMilestoneClick,
       ...props
     },
     ref
@@ -86,20 +86,20 @@ const AchievementList = React.forwardRef<HTMLDivElement, AchievementListProps>(
       <div ref={ref} className={cn(className)} {...props}>
         <div
           role="list"
-          aria-label="Achievements"
-          className={achievementListVariants({ columns, gap })}
+          aria-label="Milestones"
+          className={milestoneListVariants({ columns, gap })}
         >
-          {achievements.map((achievement) => {
-            const isUnlocked = achievement.achievedAt !== null
+          {milestones.map((milestone) => {
+            const isUnlocked = milestone.achievedAt !== null
             const hasProgress =
-              isUnlocked && typeof achievement.progress === "number"
+              isUnlocked && typeof milestone.progress === "number"
 
             if (!isUnlocked && lockedStyle === "hidden") {
               return null
             }
 
             const progress = hasProgress
-              ? Math.min(100, Math.max(0, achievement.progress ?? 0))
+              ? Math.min(100, Math.max(0, milestone.progress ?? 0))
               : 0
             const progressSize = progressSizeMap[badgeSize]
             const progressStroke = 3
@@ -109,29 +109,29 @@ const AchievementList = React.forwardRef<HTMLDivElement, AchievementListProps>(
 
             return (
               <div
-                key={achievement.id}
-                role={onAchievementClick ? "button" : "listitem"}
-                tabIndex={onAchievementClick ? 0 : undefined}
-                onClick={() => onAchievementClick?.(achievement)}
+                key={milestone.id}
+                role={onMilestoneClick ? "button" : "listitem"}
+                tabIndex={onMilestoneClick ? 0 : undefined}
+                onClick={() => onMilestoneClick?.(milestone)}
                 onKeyDown={
-                  onAchievementClick
+                  onMilestoneClick
                     ? (e) => {
                         if (e.key === "Enter" || e.key === " ") {
                           e.preventDefault()
-                          onAchievementClick(achievement)
+                          onMilestoneClick(milestone)
                         }
                       }
                     : undefined
                 }
                 className={cn(
                   "bg-background flex items-center gap-4 rounded-2xl border px-4 py-3",
-                  onAchievementClick && "cursor-pointer"
+                  onMilestoneClick && "cursor-pointer"
                 )}
               >
-                {achievement.badgeUrl ? (
+                {milestone.badgeUrl ? (
                   <img
-                    src={achievement.badgeUrl}
-                    alt={achievement.name}
+                    src={milestone.badgeUrl}
+                    alt={milestone.name}
                     className={cn(
                       badgeSizeMap[badgeSize],
                       "shrink-0 rounded-xl object-cover",
@@ -163,10 +163,10 @@ const AchievementList = React.forwardRef<HTMLDivElement, AchievementListProps>(
                       !isUnlocked && "text-muted-foreground"
                     )}
                   >
-                    {achievement.name}
+                    {milestone.name}
                   </p>
                   <p className="text-muted-foreground truncate text-sm">
-                    {achievement.description ?? "Complete the required steps"}
+                    {milestone.description ?? "Complete the required steps"}
                   </p>
                 </div>
 
@@ -214,7 +214,7 @@ const AchievementList = React.forwardRef<HTMLDivElement, AchievementListProps>(
     )
   }
 )
-AchievementList.displayName = "AchievementList"
+MilestoneList.displayName = "MilestoneList"
 
-export { AchievementList, achievementListVariants }
-export type { AchievementListProps, Achievement, UserAchievement }
+export { MilestoneList, milestoneListVariants }
+export type { MilestoneListProps, Milestone, UserMilestone }

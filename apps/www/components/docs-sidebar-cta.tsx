@@ -15,11 +15,12 @@ export function DocsSidebarCta({ className }: React.ComponentProps<"div">) {
     >
       <Icons.logo className="size-6" />
       <div className="font-display relative z-10 text-base leading-tight font-medium tracking-[-0.01em] text-balance group-hover:underline">
-        Power Gamification with Trophy
+        Power in-app personalization with Trophy
       </div>
       <div className="text-foreground relative z-10">
-        Trophy powers the infrastructure you need to ship reliable gamification
-        features at scale.
+        Trophy is the 1:1 customer engagement platform for consumer web and mobile
+        apps: in-app streaks, milestones, points and leaderboards, plus AI
+        lifecycle agents that personalize every message.
       </div>
       <Button size="sm" className="relative z-10 mt-2 w-fit" asChild>
         <Link

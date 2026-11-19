@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "streak-calendar",
   "title": "Streak Calendar",
-  "description": "React streak calendar for gamification—week, month, and git-style grids to visualize consistency. Native support for streak freezes. Ideal streak UI design for habit tracking and personal progress. Built on shadcn/ui and Tailwind CSS. Open source.",
+  "description": "React streak calendar with week, month, and git-style grids to visualize consistency. Native support for streak freezes. Ideal streak UI design for habit tracking and personal progress. Built on shadcn/ui and Tailwind CSS. Open source.",
   "dependencies": [
     "lucide-react"
   ],

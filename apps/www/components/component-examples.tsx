@@ -2,14 +2,14 @@
 
 import * as React from "react"
 
-import { AchievementBadge } from "@/registry/trophy/ui/achievement-badge"
-import { AchievementCard } from "@/registry/trophy/ui/achievement-card"
-import { AchievementGrid } from "@/registry/trophy/ui/achievement-grid"
-import { AchievementList } from "@/registry/trophy/ui/achievement-list"
-import { AchievementUnlocked } from "@/registry/trophy/ui/achievement-unlocked"
 import { LeaderboardCard } from "@/registry/trophy/ui/leaderboard-card"
 import { LeaderboardPodium } from "@/registry/trophy/ui/leaderboard-podium"
 import { LeaderboardRankings } from "@/registry/trophy/ui/leaderboard-rankings"
+import { MilestoneBadge } from "@/registry/trophy/ui/milestone-badge"
+import { MilestoneCard } from "@/registry/trophy/ui/milestone-card"
+import { MilestoneGrid } from "@/registry/trophy/ui/milestone-grid"
+import { MilestoneList } from "@/registry/trophy/ui/milestone-list"
+import { MilestoneUnlocked } from "@/registry/trophy/ui/milestone-unlocked"
 import { PointsAwards } from "@/registry/trophy/ui/points-awards"
 import { PointsBadge } from "@/registry/trophy/ui/points-badge"
 import { PointsBoost } from "@/registry/trophy/ui/points-boost"
@@ -225,7 +225,7 @@ function PointsChartPeriodSelectorPreview() {
   )
 }
 
-function AchievementUnlockedPreview() {
+function MilestoneUnlockedPreview() {
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -235,11 +235,11 @@ function AchievementUnlockedPreview() {
         onClick={() => setOpen(true)}
         className="bg-background text-foreground hover:bg-muted rounded-lg border px-4 py-2 text-sm font-medium transition-colors"
       >
-        Unlock achievement
+        Unlock milestone
       </button>
 
-      <AchievementUnlocked
-        achievement={{
+      <MilestoneUnlocked
+        milestone={{
           id: "task-champion",
           name: "Task Champion",
           description: "Complete a task 30 days in a row. Congratulations!!",
@@ -768,7 +768,7 @@ function LeaderboardCardWithPreviousRunsPreview() {
   )
 }
 
-const achievementGridUnlockedPreviewItems = [
+const milestoneGridUnlockedPreviewItems = [
   {
     id: "1",
     name: "Early Bird",
@@ -801,8 +801,8 @@ const achievementGridUnlockedPreviewItems = [
   },
 ]
 
-const achievementGridLockedPreviewItems = [
-  ...achievementGridUnlockedPreviewItems,
+const milestoneGridLockedPreviewItems = [
+  ...milestoneGridUnlockedPreviewItems,
   {
     id: "6",
     name: "Perfectionist",
@@ -817,7 +817,7 @@ const achievementGridLockedPreviewItems = [
   },
 ]
 
-const achievementGridSeriesPreviewItems = [
+const milestoneGridSeriesPreviewItems = [
   {
     id: "series-1",
     name: "Consistency I",
@@ -848,7 +848,7 @@ const achievementGridSeriesPreviewItems = [
   },
 ]
 
-const achievementGridRarityPreviewItems = [
+const milestoneGridRarityPreviewItems = [
   {
     id: "rarity-1",
     name: "Daily Legend",
@@ -879,7 +879,7 @@ const achievementGridRarityPreviewItems = [
   },
 ]
 
-const achievementGridCompletePreviewItems = [
+const milestoneGridCompletePreviewItems = [
   {
     id: "complete-1",
     name: "Consistency I",
@@ -910,21 +910,21 @@ const achievementGridCompletePreviewItems = [
   },
 ]
 
-const achievementBadgeLockedPreviewItem = {
+const milestoneBadgeLockedPreviewItem = {
   id: "badge-locked-1",
   name: "Perfectionist",
   trigger: "metric" as const,
   achievedAt: null,
 }
 
-const achievementBadgePreviewItem = {
+const milestoneBadgePreviewItem = {
   id: "badge-1",
   name: "Consistency I",
   trigger: "streak" as const,
   achievedAt: new Date().toISOString(),
 }
 
-const achievementListPreviewItems = [
+const milestoneListPreviewItems = [
   {
     id: "list-1",
     name: "10 Day Streak",
@@ -950,7 +950,7 @@ const achievementListPreviewItems = [
   },
 ]
 
-const achievementCardPreviewItems = [
+const milestoneCardPreviewItems = [
   {
     id: "card-1",
     name: "Wellness God",
@@ -986,7 +986,7 @@ const achievementCardPreviewItems = [
   },
 ]
 
-const achievementCardHighlightedPreviewItems = [
+const milestoneCardHighlightedPreviewItems = [
   {
     id: "highlight-1",
     name: "Wellness God",
@@ -1222,11 +1222,11 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   defaultHowItWorksOpen
 />`,
   },
-  "achievement-grid": {
+  "milestone-grid": {
     component: (
       <div className="w-full max-w-3xl">
-        <AchievementGrid
-          achievements={[
+        <MilestoneGrid
+          milestones={[
             {
               id: "1",
               name: "Early Bird",
@@ -1252,8 +1252,8 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
         />
       </div>
     ),
-    code: `<AchievementGrid
-  achievements={[
+    code: `<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
@@ -1261,41 +1261,41 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   columns={3}
 />`,
   },
-  "achievement-grid-columns": {
+  "milestone-grid-columns": {
     component: (
       <div className="w-full max-w-5xl space-y-6">
-        <AchievementGrid
-          achievements={achievementGridUnlockedPreviewItems}
+        <MilestoneGrid
+          milestones={milestoneGridUnlockedPreviewItems}
           columns={2}
         />
-        <AchievementGrid
-          achievements={achievementGridUnlockedPreviewItems}
+        <MilestoneGrid
+          milestones={milestoneGridUnlockedPreviewItems}
           columns={3}
         />
-        <AchievementGrid
-          achievements={achievementGridUnlockedPreviewItems}
+        <MilestoneGrid
+          milestones={milestoneGridUnlockedPreviewItems}
           columns={4}
         />
       </div>
     ),
-    code: `<AchievementGrid
-  achievements={[
+    code: `<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
   ]}
   columns={2}
 />
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
   ]}
   columns={3}
 />
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
@@ -1303,41 +1303,41 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   columns={4}
 />`,
   },
-  "achievement-grid-gap": {
+  "milestone-grid-gap": {
     component: (
       <div className="w-full max-w-5xl space-y-6">
-        <AchievementGrid
-          achievements={achievementGridUnlockedPreviewItems}
+        <MilestoneGrid
+          milestones={milestoneGridUnlockedPreviewItems}
           gap="sm"
         />
-        <AchievementGrid
-          achievements={achievementGridUnlockedPreviewItems}
+        <MilestoneGrid
+          milestones={milestoneGridUnlockedPreviewItems}
           gap="default"
         />
-        <AchievementGrid
-          achievements={achievementGridUnlockedPreviewItems}
+        <MilestoneGrid
+          milestones={milestoneGridUnlockedPreviewItems}
           gap="lg"
         />
       </div>
     ),
-    code: `<AchievementGrid
-  achievements={[
+    code: `<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
   ]}
   gap="sm"
 />
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
   ]}
   gap="default"
 />
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
@@ -1345,10 +1345,10 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   gap="lg"
 />`,
   },
-  "achievement-badge": {
-    component: <AchievementBadge achievement={achievementBadgePreviewItem} />,
-    code: `<AchievementBadge
-  achievement={{
+  "milestone-badge": {
+    component: <MilestoneBadge milestone={milestoneBadgePreviewItem} />,
+    code: `<MilestoneBadge
+  milestone={{
     id: "1",
     name: "Consistency I",
     trigger: "streak",
@@ -1357,29 +1357,29 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   }}
 />`,
   },
-  "achievement-badge-sizes": {
+  "milestone-badge-sizes": {
     component: (
       <div className="flex flex-wrap items-center gap-4">
-        <AchievementBadge
-          achievement={achievementGridUnlockedPreviewItems[0]}
+        <MilestoneBadge
+          milestone={milestoneGridUnlockedPreviewItems[0]}
           badgeSize="sm"
         />
-        <AchievementBadge
-          achievement={achievementGridUnlockedPreviewItems[0]}
+        <MilestoneBadge
+          milestone={milestoneGridUnlockedPreviewItems[0]}
           badgeSize="default"
         />
-        <AchievementBadge
-          achievement={achievementGridUnlockedPreviewItems[0]}
+        <MilestoneBadge
+          milestone={milestoneGridUnlockedPreviewItems[0]}
           badgeSize="lg"
         />
-        <AchievementBadge
-          achievement={achievementGridUnlockedPreviewItems[0]}
+        <MilestoneBadge
+          milestone={milestoneGridUnlockedPreviewItems[0]}
           badgeSize="xl"
         />
       </div>
     ),
-    code: `<AchievementBadge
-  achievement={{
+    code: `<MilestoneBadge
+  milestone={{
     id: "1",
     name: "Consistency I",
     trigger: "streak",
@@ -1388,8 +1388,8 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   }}
   badgeSize="sm"
 />
-<AchievementBadge
-  achievement={{
+<MilestoneBadge
+  milestone={{
     id: "1",
     name: "Consistency I",
     trigger: "streak",
@@ -1398,8 +1398,8 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   }}
   badgeSize="default"
 />
-<AchievementBadge
-  achievement={{
+<MilestoneBadge
+  milestone={{
     id: "1",
     name: "Consistency I",
     trigger: "streak",
@@ -1408,8 +1408,8 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   }}
   badgeSize="lg"
 />
-<AchievementBadge
-  achievement={{
+<MilestoneBadge
+  milestone={{
     id: "1",
     name: "Consistency I",
     trigger: "streak",
@@ -1419,23 +1419,23 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   badgeSize="xl"
 />`,
   },
-  "achievement-badge-locked-state": {
+  "milestone-badge-locked-state": {
     component: (
       <div className="flex flex-wrap items-center gap-4">
-        <AchievementBadge achievement={achievementBadgePreviewItem} />
-        <AchievementBadge achievement={achievementBadgeLockedPreviewItem} />
+        <MilestoneBadge milestone={milestoneBadgePreviewItem} />
+        <MilestoneBadge milestone={milestoneBadgeLockedPreviewItem} />
       </div>
     ),
-    code: `<AchievementBadge
-  achievement={{
+    code: `<MilestoneBadge
+  milestone={{
     id: "badge-1",
     name: "Consistency I",
     trigger: "streak",
     achievedAt: "2024-01-01T00:00:00Z",
   }}
 />
-<AchievementBadge
-  achievement={{
+<MilestoneBadge
+  milestone={{
     id: "badge-locked-1",
     name: "Perfectionist",
     trigger: "metric",
@@ -1443,16 +1443,16 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   }}
 />`,
   },
-  "achievement-badge-series-progress": {
+  "milestone-badge-series-progress": {
     component: (
       <div className="flex flex-wrap items-center gap-4">
-        {achievementGridSeriesPreviewItems.map((achievement) => (
-          <AchievementBadge key={achievement.id} achievement={achievement} />
+        {milestoneGridSeriesPreviewItems.map((milestone) => (
+          <MilestoneBadge key={milestone.id} milestone={milestone} />
         ))}
       </div>
     ),
-    code: `<AchievementBadge
-  achievement={{
+    code: `<MilestoneBadge
+  milestone={{
     id: "series-1",
     name: "Consistency I",
     trigger: "streak",
@@ -1461,16 +1461,16 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   }}
 />`,
   },
-  "achievement-badge-rarity": {
+  "milestone-badge-rarity": {
     component: (
       <div className="flex flex-wrap items-center gap-4">
-        {achievementGridRarityPreviewItems.map((achievement) => (
-          <AchievementBadge key={achievement.id} achievement={achievement} />
+        {milestoneGridRarityPreviewItems.map((milestone) => (
+          <MilestoneBadge key={milestone.id} milestone={milestone} />
         ))}
       </div>
     ),
-    code: `<AchievementBadge
-  achievement={{
+    code: `<MilestoneBadge
+  milestone={{
     id: "rarity-1",
     name: "Daily Legend",
     trigger: "streak",
@@ -1479,55 +1479,55 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   }}
 />`,
   },
-  "achievement-badge-clickable": {
+  "milestone-badge-clickable": {
     component: (
-      <AchievementBadge
-        achievement={achievementBadgePreviewItem}
-        onAchievementClick={() => {}}
+      <MilestoneBadge
+        milestone={milestoneBadgePreviewItem}
+        onMilestoneClick={() => {}}
       />
     ),
-    code: `<AchievementBadge
-  achievement={{
+    code: `<MilestoneBadge
+  milestone={{
     id: "1",
     name: "Consistency I",
     trigger: "streak",
     achievedAt: "2024-01-01T00:00:00Z",
     progress: 28,
   }}
-  onAchievementClick={(achievement) => {
-    openDetailModal(achievement)
+  onMilestoneClick={(milestone) => {
+    openDetailModal(milestone)
   }}
 />`,
   },
-  "achievement-grid-complete": {
+  "milestone-grid-complete": {
     component: (
       <div className="w-full max-w-5xl">
-        <AchievementGrid
-          achievements={achievementGridCompletePreviewItems}
+        <MilestoneGrid
+          milestones={milestoneGridCompletePreviewItems}
           columns={4}
-          onAchievementClick={() => {}}
+          onMilestoneClick={() => {}}
         />
       </div>
     ),
-    code: `<AchievementGrid
-  achievements={[
+    code: `<MilestoneGrid
+  milestones={[
     { id: "complete-1", name: "Consistency I", trigger: "streak", achievedAt: "2024-01-01T00:00:00Z", progress: 28 },
     { id: "complete-2", name: "Daily Legend", trigger: "streak", achievedAt: "2024-01-01T00:00:00Z", rarity: 3 },
     { id: "complete-3", name: "Power User", trigger: "metric", achievedAt: "2024-01-01T00:00:00Z", rarity: 12 },
     { id: "complete-4", name: "Consistency II", trigger: "streak", achievedAt: "2024-01-01T00:00:00Z", progress: 62 },
   ]}
   columns={4}
-  onAchievementClick={handleClick}
+  onMilestoneClick={handleClick}
 />`,
   },
-  "achievement-list": {
+  "milestone-list": {
     component: (
       <div className="w-full max-w-2xl">
-        <AchievementList achievements={achievementListPreviewItems} />
+        <MilestoneList milestones={milestoneListPreviewItems} />
       </div>
     ),
-    code: `<AchievementList
-  achievements={[
+    code: `<MilestoneList
+  milestones={[
     {
       id: "list-1",
       name: "10 Day Streak",
@@ -1547,17 +1547,17 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   ]}
 />`,
   },
-  "achievement-card": {
+  "milestone-card": {
     component: (
       <div className="w-full max-w-md">
-        <AchievementCard
-          achievements={achievementCardPreviewItems}
-          highlightedAchievements={achievementCardHighlightedPreviewItems}
+        <MilestoneCard
+          milestones={milestoneCardPreviewItems}
+          highlightedMilestones={milestoneCardHighlightedPreviewItems}
         />
       </div>
     ),
-    code: `<AchievementCard
-  highlightedAchievements={[
+    code: `<MilestoneCard
+  highlightedMilestones={[
     {
       id: "highlight-1",
       name: "Wellness God",
@@ -1580,7 +1580,7 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
       rarity: 5,
     },
   ]}
-  achievements={[
+  milestones={[
     {
       id: "list-1",
       name: "10 day streak",
@@ -1600,8 +1600,8 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   ]}
 />`,
   },
-  "achievement-unlocked": {
-    component: <AchievementUnlockedPreview />,
+  "milestone-unlocked": {
+    component: <MilestoneUnlockedPreview />,
     code: `const [open, setOpen] = useState(false)
 
 <button
@@ -1609,11 +1609,11 @@ export const componentExamples: Record<string, ComponentExampleConfig> = {
   onClick={() => setOpen(true)}
   className="rounded-lg border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
 >
-  Unlock achievement
+  Unlock milestone
 </button>
 
-<AchievementUnlocked
-  achievement={{
+<MilestoneUnlocked
+  milestone={{
     id: "task-champion",
     name: "Task Champion",
     description: "Complete a task 30 days in a row. Congratulations!!",

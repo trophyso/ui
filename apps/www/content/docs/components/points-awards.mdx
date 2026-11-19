@@ -1,15 +1,16 @@
 ---
 title: Points Awards
-description: "React points activity feed with dated events, totals, and trigger types for gamification timelines. Useful for XP and currency ledgers in dashboards. Built on shadcn/ui + Tailwind. Open source."
-seoTitle: "Points Awards — Gamification Points Feed for React"
+description: "React points activity feed with dated events, totals, and trigger types so users see exactly how they earned points. Useful for XP and currency ledgers in dashboards. Built on shadcn/ui + Tailwind. Open source."
+seoTitle: "Points Awards — Points Activity Feed for React"
 keywords:
-  - react gamification library
-  - gamification UI patterns
-  - gamification interface design
+  - points activity feed
+  - points history UI
+  - react points component
+  - xp ledger UI
   - react gamification components
 ---
 
-Points Awards surfaces what changed in a gamification ledger—grants, spends, bonuses, and campaign events in a readable timeline. Use when gamification UI needs transparency where trust grows when users see exactly how points moved.
+Points Awards surfaces what changed in a points ledger—grants, spends, bonuses, and campaign events in a readable timeline. Use it wherever transparency matters: trust grows when users see exactly how their points moved.
 
 <ComponentPreview name="points-awards" />
 
@@ -142,7 +143,7 @@ const awards = response.awards ?? []
 <PointsAwards awards={awards} />
 ```
 
-Icon tooltips use **`trigger.metricName`** (and optional **`metricThreshold`**) for metric awards; **`achievementName`**, streak thresholds, **`trigger.type`** or custom types to cover other types of awards.
+Icon tooltips use **`trigger.metricName`** (and optional **`metricThreshold`**) for metric awards; **`achievementName`** for milestone awards, streak thresholds, **`trigger.type`** or custom types to cover other types of awards.
 
 ## API Reference
 

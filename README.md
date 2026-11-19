@@ -1,12 +1,12 @@
-![Gamification UI Kit by Trophy](./apps/www/public/og.png)
+![Trophy UI](./apps/www/public/og.png)
 
-# Gamification UI Kit by Trophy
+# Trophy UI
 
-[Gamification UI Kit by Trophy](https://ui.trophy.so) is a component library built on top of [shadcn/ui](https://ui.shadcn.com/) to help you build gamification experiences faster.
+[Trophy UI](https://ui.trophy.so) is an open-source library of in-app components for consumer web and mobile apps, built on top of [shadcn/ui](https://ui.shadcn.com/). It helps you ship the in-app experiences that build habits and keep users coming back, faster.
 
 ## Overview
 
-Trophy's Gamification UI Kit provides pre-built, customizable React components for gamification—streaks, achievements, leaderboards, points, XP charts, event banners, and more. The [shadcn/ui](https://ui.shadcn.com/) CLI pulls components straight from the registry so you can own the code and tailor it to your product.
+Trophy UI provides pre-built, customizable React components for in-app personalization—streaks, milestones, leaderboards, points, XP charts, boost banners, and more. Components work with any backend, and their props and data shapes are designed to work seamlessly with [Trophy](https://trophy.so), the 1:1 customer engagement platform. The [shadcn/ui](https://ui.shadcn.com/) CLI pulls components straight from the registry so you can own the code and tailor it to your product.
 
 ## Installation
 
@@ -18,7 +18,7 @@ npx shadcn@latest add https://ui.trophy.so/streak-badge
 
 ## Prerequisites
 
-Before using Trophy's Gamification UI Kit, ensure your project meets these requirements:
+Before using Trophy UI, ensure your project meets these requirements:
 
 - **Node.js 18** or later
 - **React 18+** — components are client-side React
@@ -65,7 +65,7 @@ Browse the component catalog at [ui.trophy.so/r/registry.json](https://ui.trophy
 
 ## Contributing
 
-If you would like to contribute to Gamification UI Kit by Trophy:
+If you would like to contribute to Trophy UI:
 
 1. Fork the repository
 2. Create a branch for your change

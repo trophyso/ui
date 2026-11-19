@@ -1,0 +1,154 @@
+---
+title: Milestone List
+description: "Vertical React milestone list with icons, descriptions, and optional progress for dense milestone UI. Complements grids and cards in progress dashboards and onboarding flows. Open source, built on shadcn/ui + Tailwind."
+seoTitle: "Milestone List — React Milestone & Progress List"
+keywords:
+  - react milestone component
+  - milestone UI examples
+  - onboarding checklist UI
+  - progress list component
+  - achievement list react
+  - react gamification
+---
+
+Milestone List is built for dense layouts where each row carries a title, supporting text, and progress—ideal for onboarding checklists, quest logs, and step-by-step activation flows.
+
+<ComponentPreview name="milestone-list" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://ui.trophy.so/milestone-list
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="milestone-list" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { MilestoneList } from "@/components/ui/milestone-list"
+```
+
+```tsx
+<MilestoneList
+  milestones={[
+    {
+      id: "list-1",
+      name: "10 Day Streak",
+      description: "Open app for 10 days",
+      trigger: "streak",
+      achievedAt: "2024-01-01T00:00:00Z",
+      progress: 60,
+    },
+    {
+      id: "list-2",
+      name: "5,000 Calorie Burn",
+      description: "Burn 5K calories total",
+      trigger: "metric",
+      achievedAt: "2024-01-01T00:00:00Z",
+      progress: 32,
+    },
+  ]}
+/>
+```
+
+## Examples
+
+### Basic Usage
+
+<ComponentPreview name="milestone-list" />
+
+```tsx
+<MilestoneList
+  milestones={[
+    {
+      id: "list-1",
+      name: "10 Day Streak",
+      description: "Open app for 10 days",
+      trigger: "streak",
+      achievedAt: "2024-01-01T00:00:00Z",
+      progress: 60,
+    },
+    {
+      id: "list-2",
+      name: "5,000 Calorie Burn",
+      description: "Burn 5K calories total",
+      trigger: "metric",
+      achievedAt: "2024-01-01T00:00:00Z",
+      progress: 32,
+    },
+  ]}
+/>
+```
+
+## With Trophy
+
+Use the [Trophy SDK](https://docs.trophy.so/api-reference/client-libraries) to fetch a user's milestones server-side. Milestones are served by Trophy's achievements API:
+
+<OpenApiCodeSamples
+  spec="application"
+  method="get"
+  endpoint="/users/{id}/achievements"
+/>
+
+Then pass the response into `MilestoneList` props in your UI layer:
+
+```tsx
+<MilestoneList milestones={response} />
+```
+
+## API Reference
+
+### Props
+
+| Prop               | Type                                      | Default       | Description                                      |
+| ------------------ | ----------------------------------------- | ------------- | ------------------------------------------------ |
+| `milestones`       | `UserMilestone[]`                         | Required      | Array of milestones to render in list rows       |
+| `badgeSize`        | `"sm" \| "default" \| "lg"`               | `"default"`   | Size of badge in each row                        |
+| `lockedStyle`      | `"grayscale" \| "silhouette" \| "hidden"` | `"grayscale"` | Locked milestone visual treatment                |
+| `onMilestoneClick` | `(milestone) => void`                     | -             | Row click handler                                |
+| `columns`          | `2 \| 3 \| 4 \| "auto"`                   | `"auto"`      | Supported for compatibility with `MilestoneGrid` |
+| `gap`              | `"sm" \| "default" \| "lg"`               | `"default"`   | Vertical spacing between rows                    |
+
+### Types
+
+```ts
+interface Milestone {
+  id: string
+  name: string
+  description?: string | null
+  trigger: "metric" | "api" | "streak"
+  badgeUrl?: string | null
+  progress?: number // optional, unlocked only
+  rarity?: number // accepted but not rendered in list rows
+}
+
+interface UserMilestone extends Milestone {
+  achievedAt: string | null
+}
+```

@@ -1,6 +1,6 @@
-# Contributing to Gamification UI Kit by Trophy
+# Contributing to Trophy UI
 
-Thank you for helping improve [Gamification UI Kit by Trophy](https://ui.trophy.so). This document explains how to set up the repo locally, run the site and tooling, and what we look for in contributions.
+Thank you for helping improve [Trophy UI](https://ui.trophy.so). This document explains how to set up the repo locally, run the site and tooling, and what we look for in contributions.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ pnpm registry:build
 
 That cleans `public/r`, runs `shadcn build`, generates `all.json` for bulk install, then applies formatting. Production builds also run this via `prebuild` in the `www` app.
 
-**Adding a gamification component:**
+**Adding a component:**
 
 1. Add the source file under `apps/www/registry/trophy/ui/`.
 2. Add an entry to `apps/www/registry.json` with `title`, `description`, `dependencies`, and `registryDependencies` (use `button` for shadcn's Button primitive, not a Trophy catalog item).

@@ -3,11 +3,11 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { AchievementBadge } from "@/components/ui/achievement-badge"
-import { AchievementList } from "@/components/ui/achievement-list"
 import { Button } from "@/components/ui/button"
+import { MilestoneBadge } from "@/components/ui/milestone-badge"
+import { MilestoneList } from "@/components/ui/milestone-list"
 
-interface Achievement {
+interface Milestone {
   id: string
   name: string
   description?: string | null
@@ -17,34 +17,32 @@ interface Achievement {
   rarity?: number
 }
 
-interface UserAchievement extends Achievement {
+interface UserMilestone extends Milestone {
   achievedAt: string | null
 }
 
-interface AchievementCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  achievements: UserAchievement[]
-  highlightedAchievements: UserAchievement[]
+interface MilestoneCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  milestones: UserMilestone[]
+  highlightedMilestones: UserMilestone[]
   badgeSize?: "sm" | "default" | "lg"
   lockedStyle?: "grayscale" | "silhouette" | "hidden"
-  onAchievementClick?: (achievement: UserAchievement) => void
+  onMilestoneClick?: (milestone: UserMilestone) => void
 }
 
-const AchievementCard = React.forwardRef<HTMLDivElement, AchievementCardProps>(
+const MilestoneCard = React.forwardRef<HTMLDivElement, MilestoneCardProps>(
   (
     {
       className,
-      achievements,
-      highlightedAchievements,
+      milestones,
+      highlightedMilestones,
       badgeSize = "default",
       lockedStyle = "grayscale",
-      onAchievementClick,
+      onMilestoneClick,
       ...props
     },
     ref
   ) => {
-    const unlockedCount = achievements.filter(
-      (a) => a.achievedAt !== null
-    ).length
+    const unlockedCount = milestones.filter((a) => a.achievedAt !== null).length
 
     return (
       <div
@@ -62,12 +60,12 @@ const AchievementCard = React.forwardRef<HTMLDivElement, AchievementCardProps>(
         </div>
 
         <div className="mt-10 flex items-end justify-center gap-4">
-          {highlightedAchievements.slice(0, 3).map((achievement, index) => (
-            <AchievementBadge
-              key={achievement.id}
-              achievement={achievement}
+          {highlightedMilestones.slice(0, 3).map((milestone, index) => (
+            <MilestoneBadge
+              key={milestone.id}
+              milestone={milestone}
               badgeSize="sm"
-              onAchievementClick={onAchievementClick}
+              onMilestoneClick={onMilestoneClick}
               className={cn(
                 "w-28 border-0 bg-transparent p-0 shadow-none hover:shadow-none",
                 index === 1 ? "-translate-y-2" : "translate-y-1"
@@ -78,25 +76,23 @@ const AchievementCard = React.forwardRef<HTMLDivElement, AchievementCardProps>(
 
         <div className="mt-10">
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-primary text-sm font-medium">
-              All Achievements
-            </h3>
+            <h3 className="text-primary text-sm font-medium">All Milestones</h3>
             <Button variant="link" size="sm" onClick={() => {}}>
               See all
             </Button>
           </div>
-          <AchievementList
-            achievements={achievements}
+          <MilestoneList
+            milestones={milestones}
             badgeSize={badgeSize}
             lockedStyle={lockedStyle}
-            onAchievementClick={onAchievementClick}
+            onMilestoneClick={onMilestoneClick}
           />
         </div>
       </div>
     )
   }
 )
-AchievementCard.displayName = "AchievementCard"
+MilestoneCard.displayName = "MilestoneCard"
 
-export { AchievementCard }
-export type { AchievementCardProps, Achievement, UserAchievement }
+export { MilestoneCard }
+export type { MilestoneCardProps, Milestone, UserMilestone }

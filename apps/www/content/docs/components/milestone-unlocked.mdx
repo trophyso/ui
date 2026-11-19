@@ -1,18 +1,19 @@
 ---
-title: Achievement Unlocked
-description: "Celebratory React dialog for newly unlocked achievements with headline, badge, and share actions. Use for unlock moments, level up animations and more. Built on shadcn/ui + Tailwind. Open source."
-seoTitle: "Achievement Unlocked — Level Up Animation UI for React"
+title: Milestone Unlocked
+description: "Celebratory React dialog for newly unlocked milestones with headline, badge, and share actions. Use for unlock moments, level up animations and more. Built on shadcn/ui + Tailwind. Open source."
+seoTitle: "Milestone Unlocked — Level Up Animation UI for React"
 keywords:
   - level up animation
-  - react achievement component
-  - achievement UI examples
-  - gamification frontend library
+  - react milestone component
+  - milestone celebration UI
+  - achievement unlocked animation
+  - celebration modal react
   - shadcn gamification components
 ---
 
-Achievement Unlocked is a focused gamification moment for celebrating unlocks, level up animations, congratulating users, reinforcing rewards, and encouraging sharing in achievement-driven gamification experiences.
+Milestone Unlocked is a focused celebration moment for newly reached milestones—level up animations, congratulating users, reinforcing rewards, and encouraging sharing at the moments that matter most in the user journey.
 
-<ComponentPreview name="achievement-unlocked" />
+<ComponentPreview name="milestone-unlocked" />
 
 ## Installation
 
@@ -26,7 +27,7 @@ Achievement Unlocked is a focused gamification moment for celebrating unlocks, l
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add https://ui.trophy.so/achievement-unlocked
+npx shadcn@latest add https://ui.trophy.so/milestone-unlocked
 ```
 
 </TabsContent>
@@ -37,7 +38,7 @@ npx shadcn@latest add https://ui.trophy.so/achievement-unlocked
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="achievement-unlocked" />
+<ComponentSource name="milestone-unlocked" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -50,7 +51,7 @@ npx shadcn@latest add https://ui.trophy.so/achievement-unlocked
 ## Usage
 
 ```tsx
-import { AchievementUnlocked } from "@/components/ui/achievement-unlocked"
+import { MilestoneUnlocked } from "@/components/ui/milestone-unlocked"
 ```
 
 ```tsx
@@ -61,11 +62,11 @@ const [open, setOpen] = useState(false)
   onClick={() => setOpen(true)}
   className="rounded-lg border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
 >
-  Unlock achievement
+  Unlock milestone
 </button>
 
-<AchievementUnlocked
-  achievement={{
+<MilestoneUnlocked
+  milestone={{
     id: "task-champion",
     name: "Task Champion",
     description: "Complete a task 30 days in a row. Congratulations!!",
@@ -88,7 +89,7 @@ const [open, setOpen] = useState(false)
 
 ### Basic Usage
 
-<ComponentPreview name="achievement-unlocked" />
+<ComponentPreview name="milestone-unlocked" />
 
 ```tsx
 const [open, setOpen] = useState(false)
@@ -98,11 +99,11 @@ const [open, setOpen] = useState(false)
   onClick={() => setOpen(true)}
   className="rounded-lg border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
 >
-  Unlock achievement
+  Unlock milestone
 </button>
 
-<AchievementUnlocked
-  achievement={{
+<MilestoneUnlocked
+  milestone={{
     id: "task-champion",
     name: "Task Champion",
     description: "Complete a task 30 days in a row. Congratulations!!",
@@ -115,7 +116,7 @@ const [open, setOpen] = useState(false)
 
 ## With Trophy
 
-Use the [Trophy SDK](https://docs.trophy.so/api-reference/client-libraries) to send a metric event server-side:
+Use the [Trophy SDK](https://docs.trophy.so/api-reference/client-libraries) to send a metric event server-side. Any milestones the event completes are returned in the response's `achievements` field:
 
 <OpenApiCodeSamples
   spec="application"
@@ -123,26 +124,26 @@ Use the [Trophy SDK](https://docs.trophy.so/api-reference/client-libraries) to s
   endpoint="/metrics/{key}/event"
 />
 
-Then pass and transform the response into `AchievementUnlocked` props in your UI layer:
+Then pass and transform the response into `MilestoneUnlocked` props in your UI layer:
 
 ```tsx
-const unlockedAchievement = response.achievements?.[0]
-const shouldOpen = Boolean(unlockedAchievement)
+const unlockedMilestone = response.achievements?.[0]
+const shouldOpen = Boolean(unlockedMilestone)
 
 {
-  unlockedAchievement ? (
-    <AchievementUnlocked achievement={unlockedAchievement} open={shouldOpen} />
+  unlockedMilestone ? (
+    <MilestoneUnlocked milestone={unlockedMilestone} open={shouldOpen} />
   ) : null
 }
 ```
 
 ## API Reference
 
-### AchievementUnlocked
+### MilestoneUnlocked
 
 | Prop                     | Type                      | Default   | Description                                                       |
 | ------------------------ | ------------------------- | --------- | ----------------------------------------------------------------- |
-| `achievement`            | `Achievement`             | Required  | The achievement to display                                        |
+| `milestone`              | `Milestone`               | Required  | The milestone to display                                          |
 | `open`                   | `boolean`                 | Required  | Controls dialog visibility                                        |
 | `onOpenChange`           | `(open: boolean) => void` | Required  | Called when open state changes                                    |
 | `secondaryActionLabel`   | `string`                  | `"Share"` | Label for the secondary action button                             |
@@ -150,10 +151,10 @@ const shouldOpen = Boolean(unlockedAchievement)
 | `onShare`                | `() => void`              | -         | Deprecated alias for `onSecondaryActionClick`                     |
 | `className`              | `string`                  | -         | Additional classes for the dialog                                 |
 
-### Achievement
+### Milestone
 
 ```ts
-interface Achievement {
+interface Milestone {
   id: string
   name: string
   description?: string | null

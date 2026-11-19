@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "points-chart",
   "title": "Points Chart",
-  "description": "React chart for points over time. Displays trends, campaigns, and seasonality in gamification analytics views. Complements badges and levels. Built on Recharts + shadcn/ui + Tailwind. Open source.",
+  "description": "React chart for points over time. Displays trends, campaigns, and seasonality in engagement analytics views. Complements badges and levels. Built on Recharts + shadcn/ui + Tailwind. Open source.",
   "dependencies": [
     "recharts"
   ],

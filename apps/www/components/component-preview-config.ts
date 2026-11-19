@@ -15,43 +15,43 @@ const componentPreviewConfig: Record<string, ComponentPreviewConfig> = {
   "streak-card": {
     showCard: false,
   },
-  "achievement-badge": {
+  "milestone-badge": {
     showCard: false,
   },
-  "achievement-badge-sizes": {
+  "milestone-badge-sizes": {
     showCard: false,
   },
-  "achievement-badge-locked-state": {
+  "milestone-badge-locked-state": {
     showCard: false,
   },
-  "achievement-badge-series-progress": {
+  "milestone-badge-series-progress": {
     showCard: false,
   },
-  "achievement-badge-rarity": {
+  "milestone-badge-rarity": {
     showCard: false,
   },
-  "achievement-badge-clickable": {
+  "milestone-badge-clickable": {
     showCard: false,
   },
-  "achievement-grid": {
+  "milestone-grid": {
     showCard: false,
   },
-  "achievement-grid-columns": {
+  "milestone-grid-columns": {
     showCard: false,
   },
-  "achievement-grid-gap": {
+  "milestone-grid-gap": {
     showCard: false,
   },
-  "achievement-grid-complete": {
+  "milestone-grid-complete": {
     showCard: false,
   },
-  "achievement-list": {
+  "milestone-list": {
     showCard: false,
   },
-  "achievement-unlocked": {
+  "milestone-unlocked": {
     showCard: false,
   },
-  "achievement-card": {
+  "milestone-card": {
     showCard: false,
   },
   "leaderboard-rankings": {
