@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "leaderboard-podium",
   "title": "Leaderboard Podium",
-  "description": "Top-three React leaderboard podium with crowns, avatars, and ranks for competitive gamification. Leaderboard UI component for highlights and recap screens. Built on shadcn/ui + Tailwind. Open source.",
+  "description": "Top-three React leaderboard podium with crowns, avatars, and ranks to celebrate your top users. Leaderboard UI component for highlights and recap screens. Built on shadcn/ui + Tailwind. Open source.",
   "dependencies": [
     "class-variance-authority",
     "lucide-react"

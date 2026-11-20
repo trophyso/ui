@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "points-levels-timeline",
   "title": "Points Levels Timeline",
-  "description": "Vertical React timeline for level progression. Supports sub-levels, thresholds, and level progress for gamification roadmaps. Complements Points Levels List. Built on shadcn/ui + Tailwind. Open source.",
+  "description": "Vertical React timeline for level progression. Supports sub-levels, thresholds, and level progress for long-term progression roadmaps. Complements Points Levels List. Built on shadcn/ui + Tailwind. Open source.",
   "dependencies": [
     "lucide-react"
   ],

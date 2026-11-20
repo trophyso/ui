@@ -91,7 +91,7 @@ export default async function DocsPage(props: {
         <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
-              <h1 className="scroll-m-20 text-4xl font-semibold tracking-tight sm:text-3xl xl:text-4xl">
+              <h1 className="font-display scroll-m-20 text-4xl font-normal tracking-[-0.045em] sm:text-3xl xl:text-4xl">
                 {doc.title}
               </h1>
               <div className="hidden md:flex shrink-0 items-center gap-2">

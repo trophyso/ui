@@ -1,0 +1,251 @@
+---
+title: Milestone Badge
+description: "Open source React milestone badge component with locked/unlocked states, progress rings and rarity support. Use to celebrate user progress in badges and collections. Built on shadcn/ui + Tailwind."
+seoTitle: "Milestone Badge — React Badge Component for User Progress"
+keywords:
+  - react milestone component
+  - milestone badge component
+  - achievement badge react
+  - badge UI design
+  - shadcn badge component
+  - gamification components
+---
+
+The Milestone Badge is the atomic unit of milestone UI—a compact tile that celebrates user progress, with locked and unlocked states, progress, and rarity built in. Compose with [Milestone Card](/docs/components/milestone-card) and [Milestone Grid](/docs/components/milestone-grid) when you need to show milestones at scale.
+
+<ComponentPreview name="milestone-badge" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://ui.trophy.so/milestone-badge
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="milestone-badge" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { MilestoneBadge } from "@/components/ui/milestone-badge"
+```
+
+```tsx
+<MilestoneBadge
+  milestone={{
+    id: "1",
+    name: "Consistency I",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+    progress: 28,
+  }}
+/>
+```
+
+## Examples
+
+### Basic Usage
+
+<ComponentPreview name="milestone-badge" />
+
+```tsx
+<MilestoneBadge
+  milestone={{
+    id: "1",
+    name: "Consistency I",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+    progress: 28,
+  }}
+/>
+```
+
+### Badge Sizes
+
+<ComponentPreview name="milestone-badge-sizes" />
+
+```tsx
+<MilestoneBadge
+  milestone={{
+    id: "1",
+    name: "Consistency I",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+    progress: 28,
+  }}
+  badgeSize="sm"
+/>
+<MilestoneBadge
+  milestone={{
+    id: "1",
+    name: "Consistency I",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+    progress: 28,
+  }}
+  badgeSize="default"
+/>
+<MilestoneBadge
+  milestone={{
+    id: "1",
+    name: "Consistency I",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+    progress: 28,
+  }}
+  badgeSize="lg"
+/>
+<MilestoneBadge
+  milestone={{
+    id: "1",
+    name: "Consistency I",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+    progress: 28,
+  }}
+  badgeSize="xl"
+/>
+```
+
+### Locked State
+
+When `milestone.achievedAt` is `null`, the badge is shown in a locked state.
+
+<ComponentPreview name="milestone-badge-locked-state" />
+
+```tsx
+<MilestoneBadge
+  milestone={{
+    id: "badge-1",
+    name: "Consistency I",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+  }}
+/>
+<MilestoneBadge
+  milestone={{
+    id: "badge-locked-1",
+    name: "Perfectionist",
+    trigger: "metric",
+    achievedAt: null,
+  }}
+/>
+```
+
+### Series Progress
+
+<ComponentPreview name="milestone-badge-series-progress" />
+
+```tsx
+<MilestoneBadge
+  milestone={{
+    id: "series-1",
+    name: "Consistency I",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+    progress: 28,
+  }}
+/>
+```
+
+### Rarity
+
+<ComponentPreview name="milestone-badge-rarity" />
+
+```tsx
+<MilestoneBadge
+  milestone={{
+    id: "rare-1",
+    name: "Daily Legend",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+    rarity: 3,
+  }}
+/>
+```
+
+### Clickable Milestone
+
+<ComponentPreview name="milestone-badge-clickable" />
+
+```tsx
+<MilestoneBadge
+  milestone={{
+    id: "1",
+    name: "Consistency I",
+    trigger: "streak",
+    achievedAt: "2024-01-01T00:00:00Z",
+    progress: 28,
+  }}
+  onMilestoneClick={(milestone) => {
+    openDetailModal(milestone)
+  }}
+/>
+```
+
+## With Trophy
+
+Use the [Trophy SDK](https://docs.trophy.so/api-reference/client-libraries) to fetch a user's milestones server-side. Milestones are served by Trophy's achievements API:
+
+<OpenApiCodeSamples
+  spec="application"
+  method="get"
+  endpoint="/users/{id}/achievements"
+/>
+
+Then pass the response into `MilestoneBadge` props in your UI layer:
+
+```tsx
+const milestone = response[0]
+
+<MilestoneBadge milestone={milestone} />
+```
+
+## API Reference
+
+| Prop               | Type                                | Default     | Description                   |
+| ------------------ | ----------------------------------- | ----------- | ----------------------------- |
+| `milestone`        | `UserMilestone`                     | Required    | Milestone data for this badge |
+| `badgeSize`        | `"sm" \| "default" \| "lg" \| "xl"` | `"default"` | Badge size                    |
+| `onMilestoneClick` | `(milestone) => void`               | -           | Click handler                 |
+
+### Types
+
+```ts
+interface Milestone {
+  id: string
+  name: string
+  trigger: "metric" | "api" | "streak"
+  badgeUrl?: string | null
+  progress?: number // optional series progress from 0 to 100, unlocked only
+  rarity?: number // optional rarity from 1 to 100 shown as "X% of users"
+}
+
+interface UserMilestone extends Milestone {
+  achievedAt: string | null // null = locked
+}
+```

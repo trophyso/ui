@@ -4,14 +4,14 @@ import * as React from "react"
 import { CalendarDays, Share2, X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import {
-  AchievementBadge,
-  type UserAchievement,
-} from "@/components/ui/achievement-badge"
 import { Button } from "@/components/ui/button"
+import {
+  MilestoneBadge,
+  type UserMilestone,
+} from "@/components/ui/milestone-badge"
 
 // Types (inlined - only fields used by this component)
-interface Achievement {
+interface Milestone {
   id: string
   name: string
   trigger?: "metric" | "api" | "streak"
@@ -20,9 +20,9 @@ interface Achievement {
 }
 
 // Props
-interface AchievementUnlockedProps {
-  /** Achievement that was unlocked */
-  achievement: Achievement
+interface MilestoneUnlockedProps {
+  /** Milestone that was unlocked */
+  milestone: Milestone
   /** Control open state */
   open: boolean
   /** Callback when open state changes */
@@ -37,13 +37,13 @@ interface AchievementUnlockedProps {
   className?: string
 }
 
-const AchievementUnlocked = React.forwardRef<
+const MilestoneUnlocked = React.forwardRef<
   HTMLDivElement,
-  AchievementUnlockedProps
+  MilestoneUnlockedProps
 >(
   (
     {
-      achievement,
+      milestone,
       open,
       onOpenChange,
       secondaryActionLabel = "Share",
@@ -55,7 +55,7 @@ const AchievementUnlocked = React.forwardRef<
   ) => {
     const handleSecondaryActionClick = onSecondaryActionClick ?? onShare
     const unlockedDateLabel = React.useMemo(() => {
-      const input = achievement.unlockedAt ?? new Date().toISOString()
+      const input = milestone.unlockedAt ?? new Date().toISOString()
       const date = new Date(input)
       if (Number.isNaN(date.getTime())) return "Earned today"
       return `Earned ${date.toLocaleDateString(undefined, {
@@ -63,16 +63,16 @@ const AchievementUnlocked = React.forwardRef<
         month: "short",
         year: "numeric",
       })}`
-    }, [achievement.unlockedAt])
+    }, [milestone.unlockedAt])
 
-    const badgeAchievement = React.useMemo<UserAchievement>(() => {
+    const badgeMilestone = React.useMemo<UserMilestone>(() => {
       return {
-        id: achievement.id,
-        name: achievement.name,
-        trigger: achievement.trigger ?? "streak",
-        achievedAt: achievement.unlockedAt ?? new Date().toISOString(),
+        id: milestone.id,
+        name: milestone.name,
+        trigger: milestone.trigger ?? "streak",
+        achievedAt: milestone.unlockedAt ?? new Date().toISOString(),
       }
-    }, [achievement])
+    }, [milestone])
 
     // Handle escape key
     React.useEffect(() => {
@@ -116,7 +116,7 @@ const AchievementUnlocked = React.forwardRef<
           ref={ref}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="achievement-title"
+          aria-labelledby="milestone-title"
           className={cn(
             "fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
             "bg-card w-full max-w-md rounded-xl p-6 shadow-2xl",
@@ -136,8 +136,8 @@ const AchievementUnlocked = React.forwardRef<
 
           {/* Content */}
           <div className="flex flex-col items-center text-center">
-            <AchievementBadge
-              achievement={badgeAchievement}
+            <MilestoneBadge
+              milestone={badgeMilestone}
               badgeSize="xl"
               className="mt-8 mb-12 border-0 bg-transparent p-0 shadow-none hover:shadow-none [&>span:last-child]:hidden"
             />
@@ -148,15 +148,15 @@ const AchievementUnlocked = React.forwardRef<
             </span>
 
             <h2
-              id="achievement-title"
+              id="milestone-title"
               className="mb-2 text-4xl font-bold tracking-tight"
             >
-              {achievement.name}
+              {milestone.name}
             </h2>
 
-            {achievement.description && (
+            {milestone.description && (
               <p className="text-muted-foreground mb-3 text-lg">
-                {achievement.description}
+                {milestone.description}
               </p>
             )}
 
@@ -180,7 +180,7 @@ const AchievementUnlocked = React.forwardRef<
     )
   }
 )
-AchievementUnlocked.displayName = "AchievementUnlocked"
+MilestoneUnlocked.displayName = "MilestoneUnlocked"
 
-export { AchievementUnlocked }
-export type { AchievementUnlockedProps, Achievement }
+export { MilestoneUnlocked }
+export type { MilestoneUnlockedProps, Milestone }

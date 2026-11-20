@@ -5,7 +5,7 @@ import { Trophy } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-interface Achievement {
+interface Milestone {
   id: string
   name: string
   trigger: "metric" | "api" | "streak"
@@ -14,15 +14,15 @@ interface Achievement {
   rarity?: number
 }
 
-interface UserAchievement extends Achievement {
+interface UserMilestone extends Milestone {
   /** ISO date when earned, or `null` if locked */
   achievedAt: string | null
 }
 
-interface AchievementBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  achievement: UserAchievement
+interface MilestoneBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
+  milestone: UserMilestone
   badgeSize?: "sm" | "default" | "lg" | "xl"
-  onAchievementClick?: (achievement: UserAchievement) => void
+  onMilestoneClick?: (milestone: UserMilestone) => void
 }
 
 const badgeSizeMap = {
@@ -46,29 +46,20 @@ const progressRingSizeMap = {
   xl: 136,
 } as const
 
-const AchievementBadge = React.forwardRef<
-  HTMLDivElement,
-  AchievementBadgeProps
->(
+const MilestoneBadge = React.forwardRef<HTMLDivElement, MilestoneBadgeProps>(
   (
-    {
-      className,
-      achievement,
-      badgeSize = "default",
-      onAchievementClick,
-      ...props
-    },
+    { className, milestone, badgeSize = "default", onMilestoneClick, ...props },
     ref
   ) => {
-    const isUnlocked = achievement.achievedAt !== null
+    const isUnlocked = milestone.achievedAt !== null
 
-    const hasProgress = isUnlocked && typeof achievement.progress === "number"
+    const hasProgress = isUnlocked && typeof milestone.progress === "number"
     const progress = hasProgress
-      ? Math.min(100, Math.max(0, achievement.progress ?? 0))
+      ? Math.min(100, Math.max(0, milestone.progress ?? 0))
       : 0
-    const hasRarity = typeof achievement.rarity === "number"
+    const hasRarity = typeof milestone.rarity === "number"
     const rarity = hasRarity
-      ? Math.min(100, Math.max(1, Math.round(achievement.rarity ?? 1)))
+      ? Math.min(100, Math.max(1, Math.round(milestone.rarity ?? 1)))
       : null
     const ringSize = progressRingSizeMap[badgeSize]
     const ringStrokeWidth = 4
@@ -78,28 +69,28 @@ const AchievementBadge = React.forwardRef<
       ringCircumference - (progress / 100) * ringCircumference
 
     const statusLabel = isUnlocked ? "Earned" : "Locked"
-    const itemLabel = `${achievement.name} - ${statusLabel}`
+    const itemLabel = `${milestone.name} - ${statusLabel}`
 
     return (
       <div
         ref={ref}
-        role={onAchievementClick ? "button" : "listitem"}
-        aria-label={onAchievementClick ? itemLabel : undefined}
-        tabIndex={onAchievementClick ? 0 : undefined}
-        onClick={() => onAchievementClick?.(achievement)}
+        role={onMilestoneClick ? "button" : "listitem"}
+        aria-label={onMilestoneClick ? itemLabel : undefined}
+        tabIndex={onMilestoneClick ? 0 : undefined}
+        onClick={() => onMilestoneClick?.(milestone)}
         onKeyDown={
-          onAchievementClick
+          onMilestoneClick
             ? (e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault()
-                  onAchievementClick(achievement)
+                  onMilestoneClick(milestone)
                 }
               }
             : undefined
         }
         className={cn(
           "bg-card flex flex-col items-center justify-center gap-2 rounded-lg border p-4",
-          onAchievementClick && "cursor-pointer",
+          onMilestoneClick && "cursor-pointer",
           !isUnlocked && "opacity-50",
           className
         )}
@@ -133,10 +124,10 @@ const AchievementBadge = React.forwardRef<
             </svg>
           ) : null}
 
-          {achievement.badgeUrl ? (
+          {milestone.badgeUrl ? (
             <img
-              src={achievement.badgeUrl}
-              alt={`${achievement.name} badge - ${statusLabel}`}
+              src={milestone.badgeUrl}
+              alt={`${milestone.name} badge - ${statusLabel}`}
               className={cn(
                 badgeSizeMap[badgeSize],
                 "relative z-10 rounded-full object-cover",
@@ -171,13 +162,13 @@ const AchievementBadge = React.forwardRef<
             !isUnlocked && "text-muted-foreground"
           )}
         >
-          {achievement.name}
+          {milestone.name}
         </span>
       </div>
     )
   }
 )
-AchievementBadge.displayName = "AchievementBadge"
+MilestoneBadge.displayName = "MilestoneBadge"
 
-export { AchievementBadge }
-export type { AchievementBadgeProps, Achievement, UserAchievement }
+export { MilestoneBadge }
+export type { MilestoneBadgeProps, Milestone, UserMilestone }

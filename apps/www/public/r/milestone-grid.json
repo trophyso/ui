@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "milestone-grid",
+  "title": "Milestone Grid",
+  "description": "Responsive React milestone grid for displaying collections of badges with progress and rarity across breakpoints. Ideal milestone UI design for galleries and showcases in consumer apps. Open source, built on shadcn/ui + Tailwind.",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "milestone-badge"
+  ],
+  "files": [
+    {
+      "path": "registry/trophy/ui/milestone-grid.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\nimport { MilestoneBadge } from \"@/components/ui/milestone-badge\"\n\n// Types (inlined - only fields used by this component)\ninterface Milestone {\n  id: string\n  name: string\n  trigger: \"metric\" | \"api\" | \"streak\"\n  badgeUrl?: string | null\n  progress?: number\n  rarity?: number\n}\n\ninterface UserMilestone extends Milestone {\n  achievedAt: string | null // null = locked\n}\n\n// Variants\nconst milestoneGridVariants = cva(\"grid\", {\n  variants: {\n    columns: {\n      2: \"grid-cols-2\",\n      3: \"grid-cols-3\",\n      4: \"grid-cols-4\",\n      auto: \"grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5\",\n    },\n    gap: {\n      sm: \"gap-2\",\n      default: \"gap-4\",\n      lg: \"gap-6\",\n    },\n  },\n  defaultVariants: {\n    columns: \"auto\",\n    gap: \"default\",\n  },\n})\n\n// Badge size mapping\n// Props\ninterface MilestoneGridProps\n  extends\n    React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof milestoneGridVariants> {\n  /** Array of milestones */\n  milestones: UserMilestone[]\n  /** Size of milestone badges */\n  badgeSize?: \"sm\" | \"default\" | \"lg\"\n  /** Callback when milestone clicked */\n  onMilestoneClick?: (milestone: UserMilestone) => void\n}\n\nconst MilestoneGrid = React.forwardRef<HTMLDivElement, MilestoneGridProps>(\n  (\n    {\n      className,\n      columns,\n      gap,\n      milestones,\n      badgeSize = \"default\",\n      onMilestoneClick,\n      ...props\n    },\n    ref\n  ) => {\n    return (\n      <div\n        ref={ref}\n        role=\"list\"\n        aria-label=\"Milestones\"\n        className={cn(milestoneGridVariants({ columns, gap }), className)}\n        {...props}\n      >\n        {milestones.map((milestone) => {\n          return (\n            <MilestoneBadge\n              key={milestone.id}\n              milestone={milestone}\n              badgeSize={badgeSize}\n              onMilestoneClick={onMilestoneClick}\n            />\n          )\n        })}\n      </div>\n    )\n  }\n)\nMilestoneGrid.displayName = \"MilestoneGrid\"\n\nexport { MilestoneGrid, milestoneGridVariants }\nexport type { MilestoneGridProps, Milestone, UserMilestone }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

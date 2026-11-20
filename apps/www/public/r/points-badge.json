@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "points-badge",
   "title": "Points Badge",
-  "description": "Compact React points badge for totals and currency-style scores in gamification UIs. Fits XP-style displays alongside charts and lists. Built on shadcn/ui + Tailwind. Open source.",
+  "description": "Compact React points badge for totals and currency-style scores. Fits XP-style displays alongside charts and lists. Built on shadcn/ui + Tailwind. Open source.",
   "dependencies": [
     "class-variance-authority",
     "lucide-react"

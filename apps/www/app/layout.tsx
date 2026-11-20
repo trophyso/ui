@@ -32,11 +32,11 @@ export default function RootLayout({
           }}
         />
         <meta name="theme-color" content={META_THEME_COLORS.light} />
-        <meta name="apple-mobile-web-app-title" content="Gamification UI Kit by Trophy" />
+        <meta name="apple-mobile-web-app-title" content="Trophy UI" />
       </head>
       <body
         className={cn(
-          "text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)] border",
+          "text-foreground group/body overscroll-none border font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]",
           fontVariables
         )}
       >

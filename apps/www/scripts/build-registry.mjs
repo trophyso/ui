@@ -17,11 +17,11 @@ function main() {
   execSync("pnpm exec shadcn build", { cwd: root, stdio: "inherit" })
 
   const registry = JSON.parse(fs.readFileSync(registryFile, "utf-8"))
-  const gamificationItems = registry.items.filter(
+  const uiItems = registry.items.filter(
     (item) => item.type === "registry:ui"
   )
 
-  const allComponents = gamificationItems.map((item) => {
+  const allComponents = uiItems.map((item) => {
     const file = path.join(outputDir, `${item.name}.json`)
     return JSON.parse(fs.readFileSync(file, "utf-8"))
   })

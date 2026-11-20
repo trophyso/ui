@@ -32,6 +32,23 @@ const nextConfig = {
         destination: "/docs/components",
         permanent: true,
       },
+      // Achievement components were renamed to Milestone components. Keep old
+      // install commands, registry JSON URLs, and docs links working.
+      {
+        source: "/achievement-:slug",
+        destination: "/milestone-:slug",
+        permanent: true,
+      },
+      {
+        source: "/r/achievement-:slug",
+        destination: "/r/milestone-:slug",
+        permanent: true,
+      },
+      {
+        source: "/docs/components/achievement-:slug",
+        destination: "/docs/components/milestone-:slug",
+        permanent: true,
+      },
     ]
   },
   rewrites() {

@@ -1,18 +1,18 @@
 ---
-title: Achievement Grid
-description: "Responsive React achievement grid for displaying collections of badges with progress and rarity across breakpoints. Ideal achievement UI design for galleries and showcases in consumer apps. Open source, built on shadcn/ui + Tailwind."
-seoTitle: "Achievement Grid — Achievement Badge Component for React"
+title: Milestone Grid
+description: "Responsive React milestone grid for displaying collections of badges with progress and rarity across breakpoints. Ideal milestone UI design for galleries and showcases in consumer apps. Open source, built on shadcn/ui + Tailwind."
+seoTitle: "Milestone Grid — Badge Collection Grid for React"
 keywords:
-  - achievement badge component
-  - achievement UI design
+  - milestone badge component
+  - milestone UI design
+  - badge collection UI
+  - achievement grid react
   - react gamification components
-  - gamification UI patterns
-  - tailwind gamification components
 ---
 
-Achievement Grid lays out badge collections in a scannable gamification surface—balanced columns, spacing rhythm, and built-in rarity or completion metadata for trophy rooms and showcase-style achievement gamification.
+Milestone Grid lays out badge collections in a scannable surface—balanced columns, spacing rhythm, and built-in rarity or completion metadata for trophy rooms and showcase-style milestone pages.
 
-<ComponentPreview name="achievement-grid" />
+<ComponentPreview name="milestone-grid" />
 
 ## Installation
 
@@ -26,7 +26,7 @@ Achievement Grid lays out badge collections in a scannable gamification surface�
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add https://ui.trophy.so/achievement-grid
+npx shadcn@latest add https://ui.trophy.so/milestone-grid
 ```
 
 </TabsContent>
@@ -37,7 +37,7 @@ npx shadcn@latest add https://ui.trophy.so/achievement-grid
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<ComponentSource name="achievement-grid" />
+<ComponentSource name="milestone-grid" />
 
 <Step>Update the import paths to match your project setup.</Step>
 
@@ -50,12 +50,12 @@ npx shadcn@latest add https://ui.trophy.so/achievement-grid
 ## Usage
 
 ```tsx
-import { AchievementGrid } from "@/components/ui/achievement-grid"
+import { MilestoneGrid } from "@/components/ui/milestone-grid"
 ```
 
 ```tsx
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     {
       id: "1",
       name: "Early Bird",
@@ -82,11 +82,11 @@ import { AchievementGrid } from "@/components/ui/achievement-grid"
 
 ### Basic Usage
 
-<ComponentPreview name="achievement-grid" />
+<ComponentPreview name="milestone-grid" />
 
 ```tsx
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     {
       id: "1",
       name: "Early Bird",
@@ -111,28 +111,28 @@ import { AchievementGrid } from "@/components/ui/achievement-grid"
 
 ### Column Layouts
 
-<ComponentPreview name="achievement-grid-columns" />
+<ComponentPreview name="milestone-grid-columns" />
 
 ```tsx
 // Fixed columns
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
   ]}
   columns={2}
 />
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
   ]}
   columns={3}
 />
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
@@ -141,8 +141,8 @@ import { AchievementGrid } from "@/components/ui/achievement-grid"
 />
 
 // Auto-responsive (default)
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
@@ -154,27 +154,27 @@ import { AchievementGrid } from "@/components/ui/achievement-grid"
 
 ### Gap Sizes
 
-<ComponentPreview name="achievement-grid-gap" />
+<ComponentPreview name="milestone-grid-gap" />
 
 ```tsx
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
   ]}
   gap="sm"
 />
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
   ]}
   gap="default"
 />
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     { id: "1", name: "Early Bird", trigger: "api", achievedAt: "2024-01-01T00:00:00Z" },
     { id: "2", name: "First Steps", trigger: "streak", achievedAt: "2024-01-03T00:00:00Z" },
     { id: "3", name: "Task Master", trigger: "metric", achievedAt: "2024-01-02T00:00:00Z" },
@@ -183,15 +183,15 @@ import { AchievementGrid } from "@/components/ui/achievement-grid"
 />
 ```
 
-`AchievementGrid` composes the `AchievementBadge` component internally. For visual badge options such as size, progress, rarity, and click handling, see [Achievement Badge](/docs/components/achievement-badge). Locked badges are determined by `achievedAt === null` on each item.
+`MilestoneGrid` composes the `MilestoneBadge` component internally. For visual badge options such as size, progress, rarity, and click handling, see [Milestone Badge](/docs/components/milestone-badge). Locked badges are determined by `achievedAt === null` on each item.
 
 ### Complete Example
 
-<ComponentPreview name="achievement-grid-complete" />
+<ComponentPreview name="milestone-grid-complete" />
 
 ```tsx
-<AchievementGrid
-  achievements={[
+<MilestoneGrid
+  milestones={[
     {
       id: "complete-1",
       name: "Consistency I",
@@ -222,13 +222,13 @@ import { AchievementGrid } from "@/components/ui/achievement-grid"
     },
   ]}
   columns={4}
-  onAchievementClick={handleClick}
+  onMilestoneClick={handleClick}
 />
 ```
 
 ## With Trophy
 
-Use the [Trophy SDK](https://docs.trophy.so/api-reference/client-libraries) to fetch a user's achievements server-side:
+Use the [Trophy SDK](https://docs.trophy.so/api-reference/client-libraries) to fetch a user's milestones server-side. Milestones are served by Trophy's achievements API:
 
 <OpenApiCodeSamples
   spec="application"
@@ -236,28 +236,28 @@ Use the [Trophy SDK](https://docs.trophy.so/api-reference/client-libraries) to f
   endpoint="/users/{id}/achievements"
 />
 
-Then pass the response into `AchievementGrid` props in your UI layer:
+Then pass the response into `MilestoneGrid` props in your UI layer:
 
 ```tsx
-<AchievementGrid achievements={response} />
+<MilestoneGrid milestones={response} />
 ```
 
 ## API Reference
 
-### AchievementGrid
+### MilestoneGrid
 
-| Prop                 | Type                        | Default     | Description                      |
-| -------------------- | --------------------------- | ----------- | -------------------------------- |
-| `achievements`       | `UserAchievement[]`         | Required    | Array of achievements to display |
-| `columns`            | `2 \| 3 \| 4 \| "auto"`     | `"auto"`    | Number of grid columns           |
-| `gap`                | `"sm" \| "default" \| "lg"` | `"default"` | Gap between grid items           |
-| `badgeSize`          | `"sm" \| "default" \| "lg"` | `"default"` | Size of achievement badges       |
-| `onAchievementClick` | `(achievement) => void`     | -           | Click handler for achievements   |
+| Prop               | Type                        | Default     | Description                    |
+| ------------------ | --------------------------- | ----------- | ------------------------------ |
+| `milestones`       | `UserMilestone[]`           | Required    | Array of milestones to display |
+| `columns`          | `2 \| 3 \| 4 \| "auto"`     | `"auto"`    | Number of grid columns         |
+| `gap`              | `"sm" \| "default" \| "lg"` | `"default"` | Gap between grid items         |
+| `badgeSize`        | `"sm" \| "default" \| "lg"` | `"default"` | Size of milestone badges       |
+| `onMilestoneClick` | `(milestone) => void`       | -           | Click handler for milestones   |
 
 ### Types
 
 ```ts
-interface Achievement {
+interface Milestone {
   id: string
   name: string
   trigger: "metric" | "api" | "streak"
@@ -266,7 +266,7 @@ interface Achievement {
   rarity?: number // optional rarity from 1 to 100 shown as "X% of users"
 }
 
-interface UserAchievement extends Achievement {
+interface UserMilestone extends Milestone {
   achievedAt: string | null // null = locked
 }
 ```

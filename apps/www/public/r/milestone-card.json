@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "milestone-card",
+  "title": "Milestone Card",
+  "description": "React milestone card with totals, featured badges, and scrollable lists for profile and progress surfaces. Fits consumer, SaaS and community products. Open source, built on shadcn/ui + Tailwind.",
+  "dependencies": [],
+  "registryDependencies": [
+    "milestone-badge",
+    "milestone-list",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/trophy/ui/milestone-card.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { MilestoneBadge } from \"@/components/ui/milestone-badge\"\nimport { MilestoneList } from \"@/components/ui/milestone-list\"\nimport { Button } from \"@/components/ui/button\"\n\ninterface Milestone {\n  id: string\n  name: string\n  description?: string | null\n  trigger: \"metric\" | \"api\" | \"streak\"\n  badgeUrl?: string | null\n  progress?: number\n  rarity?: number\n}\n\ninterface UserMilestone extends Milestone {\n  achievedAt: string | null\n}\n\ninterface MilestoneCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  milestones: UserMilestone[]\n  highlightedMilestones: UserMilestone[]\n  badgeSize?: \"sm\" | \"default\" | \"lg\"\n  lockedStyle?: \"grayscale\" | \"silhouette\" | \"hidden\"\n  onMilestoneClick?: (milestone: UserMilestone) => void\n}\n\nconst MilestoneCard = React.forwardRef<HTMLDivElement, MilestoneCardProps>(\n  (\n    {\n      className,\n      milestones,\n      highlightedMilestones,\n      badgeSize = \"default\",\n      lockedStyle = \"grayscale\",\n      onMilestoneClick,\n      ...props\n    },\n    ref\n  ) => {\n    const unlockedCount = milestones.filter(\n      (a) => a.achievedAt !== null\n    ).length\n\n    return (\n      <div\n        ref={ref}\n        className={cn(\"bg-card rounded-2xl border p-6 shadow-sm\", className)}\n        {...props}\n      >\n        <div className=\"text-center\">\n          <p className=\"text-7xl font-bold tracking-tight sm:text-8xl\">\n            {unlockedCount}\n          </p>\n          <p className=\"text-muted-foreground mt-1 text-sm font-medium\">\n            Badges Unlocked\n          </p>\n        </div>\n\n        <div className=\"mt-10 flex items-end justify-center gap-4\">\n          {highlightedMilestones.slice(0, 3).map((milestone, index) => (\n            <MilestoneBadge\n              key={milestone.id}\n              milestone={milestone}\n              badgeSize=\"sm\"\n              onMilestoneClick={onMilestoneClick}\n              className={cn(\n                \"w-28 border-0 bg-transparent p-0 shadow-none hover:shadow-none\",\n                index === 1 ? \"-translate-y-2\" : \"translate-y-1\"\n              )}\n            />\n          ))}\n        </div>\n\n        <div className=\"mt-10\">\n          <div className=\"mb-3 flex items-center justify-between\">\n            <h3 className=\"text-primary text-sm font-medium\">\n              All Milestones\n            </h3>\n            <Button variant=\"link\" size=\"sm\" onClick={() => {}}>\n              See all\n            </Button>\n          </div>\n          <MilestoneList\n            milestones={milestones}\n            badgeSize={badgeSize}\n            lockedStyle={lockedStyle}\n            onMilestoneClick={onMilestoneClick}\n          />\n        </div>\n      </div>\n    )\n  }\n)\nMilestoneCard.displayName = \"MilestoneCard\"\n\nexport { MilestoneCard }\nexport type { MilestoneCardProps, Milestone, UserMilestone }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

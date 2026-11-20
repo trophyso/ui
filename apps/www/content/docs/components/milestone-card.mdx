@@ -1,0 +1,184 @@
+---
+title: Milestone Card
+description: "React milestone card with totals, featured badges, and scrollable lists for profile and progress surfaces. Fits consumer, SaaS and community products. Open source, built on shadcn/ui + Tailwind."
+seoTitle: "Milestone Card — User Progress Card for React"
+keywords:
+  - milestone UI examples
+  - react milestone component
+  - user progress UI
+  - achievement card react
+  - shadcn gamification
+---
+
+The Milestone Card summarizes a user's progress in one place—headline stats, spotlighted badges, and scrollable collections without leaving the card, suited to profile pages and progress hubs.
+
+<ComponentPreview name="milestone-card" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://ui.trophy.so/milestone-card
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="milestone-card" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { MilestoneCard } from "@/components/ui/milestone-card"
+```
+
+```tsx
+<MilestoneCard
+  highlightedMilestones={[
+    {
+      id: "highlight-1",
+      name: "Wellness God",
+      trigger: "streak",
+      achievedAt: "2024-01-01T00:00:00Z",
+      rarity: 8,
+    },
+    {
+      id: "highlight-2",
+      name: "10 day streak",
+      trigger: "streak",
+      achievedAt: "2024-01-01T00:00:00Z",
+      rarity: 24,
+    },
+    {
+      id: "highlight-3",
+      name: "Chatbot King",
+      trigger: "api",
+      achievedAt: "2024-01-01T00:00:00Z",
+      rarity: 5,
+    },
+  ]}
+  milestones={[
+    {
+      id: "list-1",
+      name: "10 day streak",
+      description: "Open app for 10 days",
+      trigger: "streak",
+      achievedAt: "2024-01-01T00:00:00Z",
+      progress: 60,
+    },
+    {
+      id: "list-2",
+      name: "Fully Hydrated Bro",
+      description: "Drink 5,000L of water total",
+      trigger: "metric",
+      achievedAt: "2024-01-01T00:00:00Z",
+      progress: 32,
+    },
+  ]}
+/>
+```
+
+## Examples
+
+### Basic Usage
+
+<ComponentPreview name="milestone-card" />
+
+```tsx
+<MilestoneCard
+  highlightedMilestones={[
+    {
+      id: "highlight-1",
+      name: "Wellness God",
+      trigger: "streak",
+      achievedAt: "2024-01-01T00:00:00Z",
+      rarity: 8,
+    },
+    {
+      id: "highlight-2",
+      name: "10 day streak",
+      trigger: "streak",
+      achievedAt: "2024-01-01T00:00:00Z",
+      rarity: 24,
+    },
+    {
+      id: "highlight-3",
+      name: "Chatbot King",
+      trigger: "api",
+      achievedAt: "2024-01-01T00:00:00Z",
+      rarity: 5,
+    },
+  ]}
+  milestones={[
+    {
+      id: "list-1",
+      name: "10 day streak",
+      description: "Open app for 10 days",
+      trigger: "streak",
+      achievedAt: "2024-01-01T00:00:00Z",
+      progress: 60,
+    },
+    {
+      id: "list-2",
+      name: "Fully Hydrated Bro",
+      description: "Drink 5,000L of water total",
+      trigger: "metric",
+      achievedAt: "2024-01-01T00:00:00Z",
+      progress: 32,
+    },
+  ]}
+/>
+```
+
+## With Trophy
+
+Use the [Trophy SDK](https://docs.trophy.so/api-reference/client-libraries) to fetch a user's milestones server-side. Milestones are served by Trophy's achievements API:
+
+<OpenApiCodeSamples
+  spec="application"
+  method="get"
+  endpoint="/users/{id}/achievements"
+/>
+
+Then pass and transform the response into `MilestoneCard` props in your UI layer:
+
+```tsx
+const milestones = response
+const highlightedMilestones = milestones.slice(0, 3)
+
+<MilestoneCard
+  highlightedMilestones={highlightedMilestones}
+  milestones={milestones}
+/>
+```
+
+## API Reference
+
+| Prop                    | Type                                      | Default       | Description                                                       |
+| ----------------------- | ----------------------------------------- | ------------- | ----------------------------------------------------------------- |
+| `highlightedMilestones` | `UserMilestone[]`                         | Required      | Separate featured milestones shown in the top section             |
+| `milestones`            | `UserMilestone[]`                         | Required      | List milestones rendered in the lower section and used for totals |
+| `badgeSize`             | `"sm" \| "default" \| "lg"`               | `"default"`   | Badge size used by the lower list                                 |
+| `lockedStyle`           | `"grayscale" \| "silhouette" \| "hidden"` | `"grayscale"` | Locked row presentation in the embedded `MilestoneList`           |
+| `onMilestoneClick`      | `(milestone) => void`                     | -             | Click handler for badges and list rows                            |

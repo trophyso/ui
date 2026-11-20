@@ -2,18 +2,19 @@
 
 import { useState } from "react"
 
-import { AchievementGrid } from "@/registry/trophy/ui/achievement-grid"
-import { AchievementList } from "@/registry/trophy/ui/achievement-list"
-import { AchievementUnlocked } from "@/registry/trophy/ui/achievement-unlocked"
 import { Button } from "@/registry/trophy/ui/button"
 import { LeaderboardPodium } from "@/registry/trophy/ui/leaderboard-podium"
 import { LeaderboardRankings } from "@/registry/trophy/ui/leaderboard-rankings"
+import { MilestoneGrid } from "@/registry/trophy/ui/milestone-grid"
+import { MilestoneList } from "@/registry/trophy/ui/milestone-list"
+import { MilestoneUnlocked } from "@/registry/trophy/ui/milestone-unlocked"
 import { PointsAwards } from "@/registry/trophy/ui/points-awards"
 import { PointsBadge } from "@/registry/trophy/ui/points-badge"
 import { PointsBoost } from "@/registry/trophy/ui/points-boost"
 import { PointsChart } from "@/registry/trophy/ui/points-chart"
 import { PointsLevelsList } from "@/registry/trophy/ui/points-levels-list"
 import { StreakBadge } from "@/registry/trophy/ui/streak-badge"
+
 import { BlurFade } from "./ui/blur-fade"
 
 const chartData7Days = (() => {
@@ -268,7 +269,7 @@ const rankings = [
   },
 ]
 
-const achievements = [
+const milestones = [
   {
     id: "a-1",
     name: "250 tasks",
@@ -440,7 +441,7 @@ const awardsRows = (() => {
 
 export function HomeComponentMosaic() {
   const [period, setPeriod] = useState("last7Days" as const)
-  const [achievementModalOpen, setAchievementModalOpen] = useState(false)
+  const [milestoneModalOpen, setMilestoneModalOpen] = useState(false)
   return (
     <section className="container-wrapper relative z-10 mt-2 pb-10 md:pb-16">
       <div className="container">
@@ -459,8 +460,8 @@ export function HomeComponentMosaic() {
                 />
               </BlurFade>
               <BlurFade delay={0.1} className="h-full">
-                <AchievementGrid
-                  achievements={achievements}
+                <MilestoneGrid
+                  milestones={milestones}
                   columns={2}
                   gap="sm"
                   badgeSize="sm"
@@ -551,10 +552,10 @@ export function HomeComponentMosaic() {
                 >
                   <Button
                     variant="outline"
-                    onClick={() => setAchievementModalOpen(true)}
+                    onClick={() => setMilestoneModalOpen(true)}
                     className="w-full"
                   >
-                    Unlock achievement
+                    Unlock milestone
                   </Button>
                 </BlurFade>
                 <BlurFade
@@ -590,8 +591,8 @@ export function HomeComponentMosaic() {
                   />
                 </BlurFade>
                 <BlurFade delay={0.5} className="overflow-hidden">
-                  <AchievementList
-                    achievements={[achievements[0]!]}
+                  <MilestoneList
+                    milestones={[milestones[0]!]}
                     columns={2}
                     gap="sm"
                     badgeSize="sm"
@@ -604,11 +605,11 @@ export function HomeComponentMosaic() {
         </div>
       </div>
 
-      {/* Dialog for achievement unlocked */}
-      <AchievementUnlocked
-        achievement={achievements[0]!}
-        open={achievementModalOpen}
-        onOpenChange={setAchievementModalOpen}
+      {/* Dialog for milestone unlocked */}
+      <MilestoneUnlocked
+        milestone={milestones[0]!}
+        open={milestoneModalOpen}
+        onOpenChange={setMilestoneModalOpen}
       />
     </section>
   )

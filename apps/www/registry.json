@@ -6,9 +6,16 @@
     {
       "name": "index",
       "type": "registry:style",
-      "dependencies": ["class-variance-authority", "lucide-react"],
-      "devDependencies": ["tw-animate-css"],
-      "registryDependencies": ["utils"],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
       "files": [],
       "cssVars": {}
     },
@@ -17,7 +24,10 @@
       "type": "registry:ui",
       "title": "Streak Badge",
       "description": "React streak counter UI in a compact badge supporting daily, weekly, monthly or yearly streaks. Built on shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["class-variance-authority", "lucide-react"],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/streak-badge.tsx",
@@ -29,8 +39,10 @@
       "name": "streak-calendar",
       "type": "registry:ui",
       "title": "Streak Calendar",
-      "description": "React streak calendar for gamification—week, month, and git-style grids to visualize consistency. Native support for streak freezes. Ideal streak UI design for habit tracking and personal progress. Built on shadcn/ui and Tailwind CSS. Open source.",
-      "dependencies": ["lucide-react"],
+      "description": "React streak calendar with week, month, and git-style grids to visualize consistency. Native support for streak freezes. Ideal streak UI design for habit tracking and personal progress. Built on shadcn/ui and Tailwind CSS. Open source.",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/streak-calendar.tsx",
@@ -43,8 +55,13 @@
       "type": "registry:ui",
       "title": "Streak Card",
       "description": "Full streak UI card for React. Daily streak display, longest streak record with optional section for streak rules. Built on shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": ["streak-calendar", "button"],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "streak-calendar",
+        "button"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/streak-card.tsx",
@@ -53,69 +70,88 @@
       ]
     },
     {
-      "name": "achievement-badge",
+      "name": "milestone-badge",
       "type": "registry:ui",
-      "title": "Achievement Badge",
-      "description": "Open source React achievement badge component with locked/unlocked states, progress rings and rarity support. Use for achievement UI design and collections. Built on shadcn/ui + Tailwind.",
-      "dependencies": ["lucide-react"],
+      "title": "Milestone Badge",
+      "description": "Open source React milestone badge component with locked/unlocked states, progress rings and rarity support. Use to celebrate user progress in badges and collections. Built on shadcn/ui + Tailwind.",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
-          "path": "registry/trophy/ui/achievement-badge.tsx",
+          "path": "registry/trophy/ui/milestone-badge.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "achievement-grid",
+      "name": "milestone-grid",
       "type": "registry:ui",
-      "title": "Achievement Grid",
-      "description": "Responsive React achievement grid for displaying collections of badges with progress and rarity across breakpoints. Ideal achievement UI design for galleries and showcases in consumer apps. Open source, built on shadcn/ui + Tailwind.",
-      "dependencies": ["class-variance-authority", "lucide-react"],
-      "registryDependencies": ["achievement-badge"],
+      "title": "Milestone Grid",
+      "description": "Responsive React milestone grid for displaying collections of badges with progress and rarity across breakpoints. Ideal milestone UI design for galleries and showcases in consumer apps. Open source, built on shadcn/ui + Tailwind.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "milestone-badge"
+      ],
       "files": [
         {
-          "path": "registry/trophy/ui/achievement-grid.tsx",
+          "path": "registry/trophy/ui/milestone-grid.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "achievement-list",
+      "name": "milestone-list",
       "type": "registry:ui",
-      "title": "Achievement List",
-      "description": "Vertical React achievement list with icons, descriptions, and optional progress for dense achievement UI. Complements grids and cards in gamification dashboards. Open source, built on shadcn/ui + Tailwind.",
-      "dependencies": ["class-variance-authority", "lucide-react"],
+      "title": "Milestone List",
+      "description": "Vertical React milestone list with icons, descriptions, and optional progress for dense milestone UI. Complements grids and cards in progress dashboards and onboarding flows. Open source, built on shadcn/ui + Tailwind.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
       "files": [
         {
-          "path": "registry/trophy/ui/achievement-list.tsx",
+          "path": "registry/trophy/ui/milestone-list.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "achievement-unlocked",
+      "name": "milestone-unlocked",
       "type": "registry:ui",
-      "title": "Achievement Unlocked",
-      "description": "Celebratory React dialog for newly unlocked achievements with headline, badge, and share actions. Use for unlock moments, level up animations and more. Built on shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": ["achievement-badge", "button"],
+      "title": "Milestone Unlocked",
+      "description": "Celebratory React dialog for newly unlocked milestones with headline, badge, and share actions. Use for unlock moments, level up animations and more. Built on shadcn/ui + Tailwind. Open source.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "milestone-badge",
+        "button"
+      ],
       "files": [
         {
-          "path": "registry/trophy/ui/achievement-unlocked.tsx",
+          "path": "registry/trophy/ui/milestone-unlocked.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "achievement-card",
+      "name": "milestone-card",
       "type": "registry:ui",
-      "title": "Achievement Card",
-      "description": "React achievement card with totals, featured badges, and scrollable lists for profile and progress surfaces. Fits achievement UI examples in SaaS, consumer and community products. Open source, built on shadcn/ui + Tailwind.",
+      "title": "Milestone Card",
+      "description": "React milestone card with totals, featured badges, and scrollable lists for profile and progress surfaces. Fits consumer, SaaS and community products. Open source, built on shadcn/ui + Tailwind.",
       "dependencies": [],
-      "registryDependencies": ["achievement-badge", "achievement-list", "button"],
+      "registryDependencies": [
+        "milestone-badge",
+        "milestone-list",
+        "button"
+      ],
       "files": [
         {
-          "path": "registry/trophy/ui/achievement-card.tsx",
+          "path": "registry/trophy/ui/milestone-card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -125,8 +161,13 @@
       "type": "registry:ui",
       "title": "Leaderboard Rankings",
       "description": "React leaderboard rankings list—avatars, scores, bylines, and crown highlights for full tables. Open-source leaderboard UI for games, communities, and SaaS challenges. shadcn/ui + Tailwind.",
-      "dependencies": ["class-variance-authority", "lucide-react"],
-      "registryDependencies": ["button"],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/leaderboard-rankings.tsx",
@@ -138,8 +179,11 @@
       "name": "leaderboard-podium",
       "type": "registry:ui",
       "title": "Leaderboard Podium",
-      "description": "Top-three React leaderboard podium with crowns, avatars, and ranks for competitive gamification. Leaderboard UI component for highlights and recap screens. Built on shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["class-variance-authority", "lucide-react"],
+      "description": "Top-three React leaderboard podium with crowns, avatars, and ranks to celebrate your top users. Leaderboard UI component for highlights and recap screens. Built on shadcn/ui + Tailwind. Open source.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/leaderboard-podium.tsx",
@@ -151,9 +195,12 @@
       "name": "leaderboard-card",
       "type": "registry:ui",
       "title": "Leaderboard Card",
-      "description": "React leaderboard component that composes title, date range, podium, and rankings—one card for competitive gamification UIs. Fits Next.js and React apps. Built on shadcn/ui + Tailwind. Open source.",
+      "description": "React leaderboard card that composes title, date range, podium, and rankings in one surface for challenges and competitions. Fits Next.js and React apps. Built on shadcn/ui + Tailwind. Open source.",
       "dependencies": [],
-      "registryDependencies": ["leaderboard-podium", "leaderboard-rankings"],
+      "registryDependencies": [
+        "leaderboard-podium",
+        "leaderboard-rankings"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/leaderboard-card.tsx",
@@ -165,8 +212,11 @@
       "name": "points-badge",
       "type": "registry:ui",
       "title": "Points Badge",
-      "description": "Compact React points badge for totals and currency-style scores in gamification UIs. Fits XP-style displays alongside charts and lists. Built on shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["class-variance-authority", "lucide-react"],
+      "description": "Compact React points badge for totals and currency-style scores. Fits XP-style displays alongside charts and lists. Built on shadcn/ui + Tailwind. Open source.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/points-badge.tsx",
@@ -178,8 +228,10 @@
       "name": "points-chart",
       "type": "registry:ui",
       "title": "Points Chart",
-      "description": "React chart for points over time. Displays trends, campaigns, and seasonality in gamification analytics views. Complements badges and levels. Built on Recharts + shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["recharts"],
+      "description": "React chart for points over time. Displays trends, campaigns, and seasonality in engagement analytics views. Complements badges and levels. Built on Recharts + shadcn/ui + Tailwind. Open source.",
+      "dependencies": [
+        "recharts"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/points-chart.tsx",
@@ -191,8 +243,11 @@
       "name": "points-awards",
       "type": "registry:ui",
       "title": "Points Awards",
-      "description": "React points activity feed with dated events, totals, and trigger types for gamification timelines. Useful for XP and currency ledgers in dashboards. Built on shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["@radix-ui/react-tooltip", "lucide-react"],
+      "description": "React points activity feed with dated events, totals, and trigger types so users see exactly how they earned points. Useful for XP and currency ledgers in dashboards. Built on shadcn/ui + Tailwind. Open source.",
+      "dependencies": [
+        "@radix-ui/react-tooltip",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/points-awards.tsx",
@@ -204,8 +259,10 @@
       "name": "points-levels-timeline",
       "type": "registry:ui",
       "title": "Points Levels Timeline",
-      "description": "Vertical React timeline for level progression. Supports sub-levels, thresholds, and level progress for gamification roadmaps. Complements Points Levels List. Built on shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["lucide-react"],
+      "description": "Vertical React timeline for level progression. Supports sub-levels, thresholds, and level progress for long-term progression roadmaps. Complements Points Levels List. Built on shadcn/ui + Tailwind. Open source.",
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/points-levels-timeline.tsx",
@@ -218,7 +275,9 @@
       "type": "registry:ui",
       "title": "Points Levels List",
       "description": "React levels list with optional progress bar between tiers. Built on shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["lucide-react"],
+      "dependencies": [
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/points-levels-list.tsx",
@@ -230,9 +289,13 @@
       "name": "points-boost",
       "type": "registry:ui",
       "title": "Points Boost",
-      "description": "React callout for points multipliers and limited-time boosts. Supports optional countdown for near-ending gamification campaigns. Built on shadcn/ui + Tailwind. Open source.",
-      "dependencies": ["lucide-react"],
-      "registryDependencies": ["button"],
+      "description": "React callout for points multipliers and limited-time boosts. Supports optional countdown for near-ending campaigns. Built on shadcn/ui + Tailwind. Open source.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
       "files": [
         {
           "path": "registry/trophy/ui/points-boost.tsx",

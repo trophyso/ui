@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "leaderboard-card",
   "title": "Leaderboard Card",
-  "description": "React leaderboard component that composes title, date range, podium, and rankings—one card for competitive gamification UIs. Fits Next.js and React apps. Built on shadcn/ui + Tailwind. Open source.",
+  "description": "React leaderboard card that composes title, date range, podium, and rankings in one surface for challenges and competitions. Fits Next.js and React apps. Built on shadcn/ui + Tailwind. Open source.",
   "dependencies": [],
   "registryDependencies": [
     "leaderboard-podium",

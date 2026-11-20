@@ -4,10 +4,10 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
-import { AchievementBadge } from "@/components/ui/achievement-badge"
+import { MilestoneBadge } from "@/components/ui/milestone-badge"
 
 // Types (inlined - only fields used by this component)
-interface Achievement {
+interface Milestone {
   id: string
   name: string
   trigger: "metric" | "api" | "streak"
@@ -16,12 +16,12 @@ interface Achievement {
   rarity?: number
 }
 
-interface UserAchievement extends Achievement {
+interface UserMilestone extends Milestone {
   achievedAt: string | null // null = locked
 }
 
 // Variants
-const achievementGridVariants = cva("grid", {
+const milestoneGridVariants = cva("grid", {
   variants: {
     columns: {
       2: "grid-cols-2",
@@ -43,27 +43,27 @@ const achievementGridVariants = cva("grid", {
 
 // Badge size mapping
 // Props
-interface AchievementGridProps
+interface MilestoneGridProps
   extends
     React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof achievementGridVariants> {
-  /** Array of achievements */
-  achievements: UserAchievement[]
-  /** Size of achievement badges */
+    VariantProps<typeof milestoneGridVariants> {
+  /** Array of milestones */
+  milestones: UserMilestone[]
+  /** Size of milestone badges */
   badgeSize?: "sm" | "default" | "lg"
-  /** Callback when achievement clicked */
-  onAchievementClick?: (achievement: UserAchievement) => void
+  /** Callback when milestone clicked */
+  onMilestoneClick?: (milestone: UserMilestone) => void
 }
 
-const AchievementGrid = React.forwardRef<HTMLDivElement, AchievementGridProps>(
+const MilestoneGrid = React.forwardRef<HTMLDivElement, MilestoneGridProps>(
   (
     {
       className,
       columns,
       gap,
-      achievements,
+      milestones,
       badgeSize = "default",
-      onAchievementClick,
+      onMilestoneClick,
       ...props
     },
     ref
@@ -72,17 +72,17 @@ const AchievementGrid = React.forwardRef<HTMLDivElement, AchievementGridProps>(
       <div
         ref={ref}
         role="list"
-        aria-label="Achievements"
-        className={cn(achievementGridVariants({ columns, gap }), className)}
+        aria-label="Milestones"
+        className={cn(milestoneGridVariants({ columns, gap }), className)}
         {...props}
       >
-        {achievements.map((achievement) => {
+        {milestones.map((milestone) => {
           return (
-            <AchievementBadge
-              key={achievement.id}
-              achievement={achievement}
+            <MilestoneBadge
+              key={milestone.id}
+              milestone={milestone}
               badgeSize={badgeSize}
-              onAchievementClick={onAchievementClick}
+              onMilestoneClick={onMilestoneClick}
             />
           )
         })}
@@ -90,7 +90,7 @@ const AchievementGrid = React.forwardRef<HTMLDivElement, AchievementGridProps>(
     )
   }
 )
-AchievementGrid.displayName = "AchievementGrid"
+MilestoneGrid.displayName = "MilestoneGrid"
 
-export { AchievementGrid, achievementGridVariants }
-export type { AchievementGridProps, Achievement, UserAchievement }
+export { MilestoneGrid, milestoneGridVariants }
+export type { MilestoneGridProps, Milestone, UserMilestone }

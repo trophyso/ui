@@ -89,7 +89,7 @@ function awardActionDescription(trigger: PointsAwardTrigger): string {
     return trigger.metricName
   }
   if (trigger.type === "achievement") {
-    return trigger.achievementName ?? "Achievement"
+    return trigger.achievementName ?? "Milestone"
   }
   if (trigger.type === "streak") {
     return trigger.streakLengthThreshold != null
